@@ -24,6 +24,8 @@ let restaurantSelections = [
 
 let finalDestination = [];
 
+let userChange = [];
+
 let transportationMethod = [
   "S-Bahn",
   "ICE Train",
@@ -48,16 +50,16 @@ let entertainmentOptions = [
 
 function getRandomDestination() {
   let chosenDestination = dayTrips[Math.floor(Math.random() * dayTrips.length)];
-  let userRequest = prompt("Would you like to generate your day Trip Destination option? Yes/No");
+  let userRequest = prompt("To generate your day trip destination enter 1 ");
 
-  if (userRequest === "Yes") {
+  if (userRequest === "1") {
     
     return chosenDestination;
   }
 }
 let destinationsChosen = getRandomDestination();
 finalDestination[0]= destinationsChosen;
-console.log(`The destination is : ${destinationsChosen}`);
+prompt(`The destination is : ${destinationsChosen}.`);
 
 function getRestaurantOptions() {
   let restaurantPick =
@@ -65,16 +67,16 @@ function getRestaurantOptions() {
       Math.floor(Math.random() * restaurantSelections.length)
     ];
   let userRestaurantPick = prompt(
-    "Would you like to generate your Restaurant options? Yes/No"
+    "To generate your Restaurant options enter 1"
   );
 
-  if (userRestaurantPick === "Yes") {
+  if (userRestaurantPick === "1") {
     return restaurantPick;
   }
 }
 let restaurantChosen = getRestaurantOptions();
 finalDestination[1] = restaurantChosen;
-console.log(`The restaurant will be : ${restaurantChosen}`);
+prompt(`Our restaurant reccomendation is : ${restaurantChosen}`);
 
 function getTransportationOptions() {
   let transportationRequest =
@@ -82,15 +84,15 @@ function getTransportationOptions() {
       Math.floor(Math.random() * transportationMethod.length)
     ];
   let userTransportationRequest = prompt(
-    " Would your like to generate your Transportation options? Yes/No"
+    "  To generate your Transportation options enter 1"
   );
-  if (userTransportationRequest === "Yes") {
+  if (userTransportationRequest === "1") {
     return transportationRequest;
   }
 }
 let transportationChosen = getTransportationOptions();
 finalDestination[2] = transportationChosen;
-console.log(`The method of transportation will be: ${transportationChosen}`);
+prompt(`The method of transportation will be: ${transportationChosen}`);
 
 function getEntertainmentOption() {
   let entertainmentPick =
@@ -98,27 +100,27 @@ function getEntertainmentOption() {
       Math.floor(Math.random() * entertainmentOptions.length)
     ];
   let userEntertainmentRequest = prompt(
-    "Would you like to generate your Entertainment options? Yes/No"
+    "To generate your Entertainment options enter 1"
   );
 
-  if (userEntertainmentRequest === "Yes") {
+  if (userEntertainmentRequest === "1") {
     return entertainmentPick;
   }
 }
 let entertainmentChosen = getEntertainmentOption();
 finalDestination[3] = entertainmentChosen;
-console.log(
+prompt(
   `The choice for your entertainment will be: ${entertainmentChosen}`
 );
 
 function confirmOrChangeTrip() {
   let userTripConfirmed = prompt(
-    `Your trip has been confirmed with the following itinerary  Destination: ${finalDestination[0]}  Restaurant:'' ${finalDestination[1]}  Transportation: ${finalDestination[2]}  Entertainment: ${finalDestination[3]}: To confirm enter 1, to make changes enter 2`
+    `Your trip has been confirmed with the following itinerary : Destination: ${finalDestination[0]} Restaurant:  ${finalDestination[1]}  Transportation: ${finalDestination[2]}  Entertainment: ${finalDestination[3]}: To confirm enter 1, to make changes enter 2`
     
   );
   switch(userTripConfirmed){
       case '1':
-          prompt('Your trip has been confirmed Auf Widersehen!');
+          alert('Your trip has been confirmed Auf Wiedersehen! ');
           break;
       case '2':
           changeTripOptions();
@@ -127,30 +129,36 @@ function confirmOrChangeTrip() {
      default:
          confirmOrChangeTrip();
   }
-  return userTripConfirmed;
+  // return userTripConfirmed;
 }
- confirmOrChangeTrip();
+  confirmOrChangeTrip();
 
 
 function changeTripOptions() {
   let userChangeOptions = prompt(
-    "Would you like to confirm your trip or change a Option? To confirm enter press any key \n Press 1- Destination Change\n Press 2- Restaurant Change \n Press 3- Transportation Change \n Press 4 - Entertainment Change" );
+    "Which changes would you like to make to your itinerary? \n Press 1- Destination Change\n Press 2- Restaurant Change \n Press 3- Transportation Change \n Press 4 - Entertainment Change" );
+
+    
    let changeMyChoice =userChangeOptions;
 
   if (changeMyChoice === "1") {
     let desUpdate = getRandomDestination();
-    prompt(`Your destination has been change to: ${desUpdate}`);
+    desUpdate = finalDestination[0];
+    alert(`Your destination has been change to: ${desUpdate}`);
     confirmOrChangeTrip();
   } else if (changeMyChoice === "2") {
     let restUpdate = getRestaurantOptions();
+    restUpdate = finalDestination[1];
     prompt(`Your new updated Restaurant choice is ${restUpdate}`);
     confirmOrChangeTrip();
   } else if (changeMyChoice === "3") {
     let transUpdate = getTransportationOptions();
+    transUpdate = finalDestination[2];
     prompt(`Your transportation method has been updated to: ${transUpdate}`);
     confirmOrChangeTrip();
   } else if (changeMyChoice === "4") {
     let entertainUpdate = getEntertainmentOption();
+    entertainUpdate = finalDestination[3];
     prompt(`Your entertainment option has been changed to: ${entertainUpdate}`);
     confirmOrChangeTrip();
   } else {
@@ -158,4 +166,23 @@ function changeTripOptions() {
   }
 }
 
-changeTripOptions();
+ function modifyUserTrip()
+ {
+  let userTravelRevisions = prompt(
+    `The following changes have been made to your itinerary : Destination: ${userChange[0]} Restaurant:  ${userChange[1]}  Transportation: ${userChange[2]}  Entertainment: ${userChange[3]}: To confirm enter 1, to make changes enter 2`
+    
+  );
+  switch(userTravelRevisions){
+      case '1':
+          alert('Your trip has been confirmed Auf Wiedersehen! ');
+          break;
+      case '2':
+          changeTripOptions();
+          break;
+          
+     default:
+         confirmOrChangeTrip();
+  }
+  // return userTripConfirmed;
+}
+  confirmOrChangeTrip();
