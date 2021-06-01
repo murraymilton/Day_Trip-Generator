@@ -22,7 +22,7 @@ let restaurantSelections = [
   "Le Petit Chef- Regensburg",
 ];
 
-let tripsUnknown = [];
+let finalDestination = [];
 
 let transportationMethod = [
   "S-Bahn",
@@ -56,7 +56,7 @@ function getRandomDestination() {
   }
 }
 let destinationsChosen = getRandomDestination();
-tripsUnknown[0]= destinationsChosen;
+finalDestination[0]= destinationsChosen;
 console.log(`The destination is : ${destinationsChosen}`);
 
 function getRestaurantOptions() {
@@ -73,7 +73,7 @@ function getRestaurantOptions() {
   }
 }
 let restaurantChosen = getRestaurantOptions();
-tripsUnknown[1] = restaurantChosen;
+finalDestination[1] = restaurantChosen;
 console.log(`The restaurant will be : ${restaurantChosen}`);
 
 function getTransportationOptions() {
@@ -89,7 +89,7 @@ function getTransportationOptions() {
   }
 }
 let transportationChosen = getTransportationOptions();
-tripsUnknown[2] = transportationChosen;
+finalDestination[2] = transportationChosen;
 console.log(`The method of transportation will be: ${transportationChosen}`);
 
 function getEntertainmentOption() {
@@ -106,19 +106,19 @@ function getEntertainmentOption() {
   }
 }
 let entertainmentChosen = getEntertainmentOption();
-tripsUnknown[3] = entertainmentChosen;
+finalDestination[3] = entertainmentChosen;
 console.log(
   `The choice for your entertainment will be: ${entertainmentChosen}`
 );
 
 function confirmOrChangeTrip() {
   let userTripConfirmed = prompt(
-    `Your trip has been confirmed with the following itinerary  Destination: ${tripsUnknown[0]}  Restaurant:'' ${tripsUnknown[1]}  Transportation: ${tripsUnknown[2]}  Entertainment: ${tripsUnknown[3]}: To confirm enter 1, to make changes enter 2`
+    `Your trip has been confirmed with the following itinerary  Destination: ${finalDestination[0]}  Restaurant:'' ${finalDestination[1]}  Transportation: ${finalDestination[2]}  Entertainment: ${finalDestination[3]}: To confirm enter 1, to make changes enter 2`
     
   );
   switch(userTripConfirmed){
       case '1':
-          console.log('Your trip has been confirmed Auf Widersehen!');
+          prompt('Your trip has been confirmed Auf Widersehen!');
           break;
       case '2':
           changeTripOptions();
@@ -129,8 +129,8 @@ function confirmOrChangeTrip() {
   }
   return userTripConfirmed;
 }
-let itineraryReview = confirmOrChangeTrip();
-console.log(itineraryReview);
+ confirmOrChangeTrip();
+
 
 function changeTripOptions() {
   let userChangeOptions = prompt(
@@ -139,19 +139,19 @@ function changeTripOptions() {
 
   if (changeMyChoice === "1") {
     let desUpdate = getRandomDestination();
-    console.log(`Your destination has been change to: ${desUpdate}`);
+    prompt(`Your destination has been change to: ${desUpdate}`);
     confirmOrChangeTrip();
   } else if (changeMyChoice === "2") {
     let restUpdate = getRestaurantOptions();
-    console.log(`Your new updated Restaurant choice is ${restUpdate}`);
+    prompt(`Your new updated Restaurant choice is ${restUpdate}`);
     confirmOrChangeTrip();
   } else if (changeMyChoice === "3") {
     let transUpdate = getTransportationOptions();
-    console.log(`Your transportation method has been updated to: ${transUpdate}`);
+    prompt(`Your transportation method has been updated to: ${transUpdate}`);
     confirmOrChangeTrip();
   } else if (changeMyChoice === "4") {
     let entertainUpdate = getEntertainmentOption();
-    console.log(`Your entertainment option has been changed to: ${entertainUpdate}`);
+    prompt(`Your entertainment option has been changed to: ${entertainUpdate}`);
     confirmOrChangeTrip();
   } else {
        changeTripOptions();
